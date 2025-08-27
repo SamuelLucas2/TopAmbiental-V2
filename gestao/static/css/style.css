@@ -107,7 +107,7 @@ img {
 
 /* --- LANDING PAGE --- */
 body.landing-body-v2 {
-  background-image: url('../img/background.jpeg');
+  background-image: url('../img/background.png');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
