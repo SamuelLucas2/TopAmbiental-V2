@@ -651,6 +651,20 @@ body.client-dashboard-dark-theme {
     font-size: 1.5rem;
   }
   
+  .landing-overlay {
+  position: fixed; /* Fixa o overlay na tela */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  /* AQUI ESTÁ O FILTRO ESCURO: Ajuste o último número (0.5) para mais ou menos escuridão */
+  background-color: rgba(0, 0, 0, 0.5); /* Preto com 50% de transparência */
+  z-index: 1; /* Garante que o overlay fique abaixo do conteúdo da caixa e acima do background */
+  /* Opcional: Adicionar um leve blur ao overlay também */
+  backdrop-filter: blur(3px); /* Ajuste o valor para o nível de blur desejado */
+  -webkit-backdrop-filter: blur(3px); /* Para compatibilidade com navegadores Webkit */
+}
+
   .btn-access {
     padding: 0.875rem 2rem;
     font-size: 1rem;
