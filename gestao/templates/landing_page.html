@@ -1,0 +1,31 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Top Ambiental - Gestão de Resíduos Perigosos</title>
+    <link rel="icon" type="image/png" href="{% static 'img/favicon.png' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body class="landing-body-v2">
+    <div class="landing-overlay">
+        <div class="landing-content-box">
+            <div class="logo-container">
+                <img src="{% static 'img/logo.png' %}" alt="Logo Top Ambiental">
+            </div>
+            <p class="company-description">
+                Desde 2025, a Top Ambiental atua na limpeza, coleta e destinação adequada de resíduos classe 1 (perigosos). Esses materiais podem ser acondicionados, armazenados temporariamente e descartados em aterros licenciados e preparados para recebê-los com segurança.
+            </p>
+            <p class="contact-info">
+                A Top Ambiental oferece a solução ideal para sua empresa. Solicite um orçamento entrando em contato:
+                <br>
+                <strong>(83) 99930-2085</strong> ou <strong>assessoria.rhc@gmail.com</strong>
+            </p>
+            <div class="landing-actions">
+                <a href="{% url 'client_login' %}" class="btn btn-primary btn-access">Acessar Área do Cliente</a>
+            </div>
+        </div>
+    </div>   
+</body>
+</html>

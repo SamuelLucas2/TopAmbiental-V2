@@ -1,0 +1,15 @@
+{% extends 'admin_panel/base_admin.html' %}
+
+{% block title %}Dashboard{% endblock %}
+
+{% block content %}
+<div class="header">
+    <h1>Dashboard</h1>
+</div>
+
+<div class="card">
+    <h3>Visão Geral</h3>
+    <p><strong>Total de Clientes Cadastrados:</strong> {{ total_clientes }}</p>
+    <p><strong>Total de Documentos Enviados:</strong> {{ total_docs }}</p>
+</div>
+{% endblock %}

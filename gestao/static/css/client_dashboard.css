@@ -1,0 +1,139 @@
+/* ARQUIVO DEDICADO: gestao/static/css/client_dashboard.css */
+
+:root {
+    --primary-color: #e8672f;
+    --dark-bg: #121212;
+    --dark-card: #1e1e1e;
+    --dark-text: #e0e0e0;
+    --dark-border: #333333;
+    --white-color: #ffffff;
+    --secondary-btn-bg: #6c757d;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    margin: 0;
+    line-height: 1.6;
+}
+
+.client-dashboard-dark-theme {
+    background-color: var(--dark-bg);
+    color: var(--dark-text);
+}
+
+.client-dashboard-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+.client-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 1.5rem;
+    margin-bottom: 2rem;
+    border-bottom: 1px solid var(--dark-border);
+}
+
+.client-header h1 {
+    color: var(--primary-color);
+    margin: 0;
+}
+
+.client-header span {
+    color: #aaa;
+}
+
+.documents-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.5rem;
+}
+
+.doc-card {
+    background-color: var(--dark-card);
+    border: 1px solid var(--dark-border);
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.doc-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+}
+
+.doc-card-header {
+    padding: 1.5rem;
+    border-bottom: 1px solid var(--dark-border);
+}
+
+.doc-card-header h3 {
+    margin: 0;
+    color: var(--white-color);
+}
+
+.doc-card-body {
+    padding: 1.5rem;
+    flex-grow: 1;
+}
+
+.doc-card-body p {
+    margin: 0;
+    color: #aaa;
+}
+
+.doc-card-footer {
+    padding: 1.5rem;
+    background-color: rgba(0,0,0,0.2);
+    border-top: 1px solid var(--dark-border);
+}
+
+.btn {
+    padding: 0.6rem 1.2rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+    font-size: 0.95rem;
+    font-weight: 500;
+    transition: all 0.2s;
+    display: inline-block;
+    text-align: center;
+}
+
+.btn-primary {
+    background-color: var(--primary-color);
+    color: var(--white-color);
+}
+.btn-primary:hover {
+    background-color: #d4561b;
+}
+
+.btn-secondary {
+    background-color: var(--secondary-btn-bg);
+    color: var(--white-color);
+}
+.btn-secondary:hover {
+    background-color: #5a6268;
+}
+
+.doc-card-footer .btn {
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.messages { list-style: none; padding: 0; margin-bottom: 1.5rem; }
+.messages li { padding: 1rem; margin-bottom: 1rem; border-radius: 5px; border: 1px solid transparent; }
+.messages li.success { color: #0f5132; background-color: #d1e7dd; border-color: #badbcc; }
+.messages li.error { color: #842029; background-color: #f8d7da; border-color: #f5c2c7; }
+
+.empty-state {
+    background-color: var(--dark-card);
+    padding: 2rem;
+    border-radius: 8px;
+    text-align: center;
+    grid-column: 1 / -1;
+}

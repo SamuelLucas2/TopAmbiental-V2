@@ -1,0 +1,58 @@
+{% extends 'admin_panel/base_admin.html' %}
+
+{% block title %}Detalhes de {{ cliente.nome_empresa }}{% endblock %}
+
+{% block content %}
+<div class="header">
+    <h1>{{ cliente.nome_empresa }}</h1>
+    <a href="{% url 'client_list' %}" class="btn btn-light">Voltar para a Lista</a>
+</div>
+
+<div class="card">
+    <h3>Enviar Novo Documento</h3>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="{{ doc_form.titulo.id_for_label }}">Título do Documento</label>
+            {{ doc_form.titulo }}
+        </div>
+        <div class="form-group">
+            <label for="{{ doc_form.arquivo.id_for_label }}">Arquivo</label>
+            {{ doc_form.arquivo }}
+        </div>
+        <button type="submit" class="btn btn-primary">Enviar Documento</button>
+    </form>
+</div>
+
+<div class="card">
+    <h3>Documentos Enviados</h3>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Título</th>
+                <th>Data de Envio</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for doc in documentos %}
+            <tr>
+                <td>{{ doc.titulo }}</td>
+                <td>{{ doc.data_envio|date:"d/m/Y H:i" }}</td>
+                <td class="actions">
+                    <a href="{{ doc.arquivo.url }}" class="btn btn-secondary" download>Download</a>
+                    <form action="{% url 'delete_document' doc.pk %}" method="post" style="display: inline;" onsubmit="return confirm('Tem certeza que deseja excluir este documento?');">
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-danger">Excluir</button>
+                    </form>
+                </td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="3">Nenhum documento encontrado para este cliente.</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

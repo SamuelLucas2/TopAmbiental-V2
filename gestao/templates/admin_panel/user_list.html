@@ -1,0 +1,40 @@
+{% extends 'admin_panel/base_admin.html' %}
+
+{% block title %}Administradores{% endblock %}
+
+{% block content %}
+<div class="header">
+    <h1>Administradores</h1>
+    <a href="{% url 'user_create' %}" class="btn btn-primary">Novo Administrador</a>
+</div>
+
+<div class="card">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Usuário (para login)</th>
+                <th>E-mail</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for user in users %}
+            <tr>
+                <td>{{ user.username }}</td>
+                <td>{{ user.email }}</td>
+                <td class="actions">
+                    {% if user.pk != request.user.pk %}
+                    <form action="{% url 'user_delete' user.pk %}" method="post" style="display: inline;" onsubmit="return confirm('Tem certeza que deseja excluir este administrador?');">
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-danger">Excluir</button>
+                    </form>
+                    {% else %}
+                    (Sua conta)
+                    {% endif %}
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

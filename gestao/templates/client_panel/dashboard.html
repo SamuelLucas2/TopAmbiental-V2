@@ -1,0 +1,48 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meus Documentos - Top Ambiental</title>
+    <link rel="stylesheet" href="{% static 'css/client_dashboard.css' %}">
+    <link rel="icon" type="image/png" href="{% static 'img/favicon.png' %}">
+</head>
+<body class="client-dashboard-dark-theme">
+    <div class="client-dashboard-container">
+        <header class="client-header">
+            <div class="header-content">
+                <h1>Top Ambiental</h1>
+                <span>Área de Documentos de <strong>{{ cliente.nome_empresa }}</strong></span>
+            </div>
+            <a href="{% url 'client_logout' %}" class="btn btn-secondary">Sair</a>
+        </header>
+        {% if messages %}
+            <ul class="messages">
+                {% for message in messages %}
+                <li class="{{ message.tags }}">{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+        <main class="documents-grid">
+            {% for doc in documentos %}
+            <div class="doc-card">
+                <div class="doc-card-header">
+                    <h3>{{ doc.titulo }}</h3>
+                </div>
+                <div class="doc-card-body">
+                    <p>Enviado em: {{ doc.data_envio|date:"d/m/Y \à\s H:i" }}</p>
+                </div>
+                <div class="doc-card-footer">
+                    <a href="{{ doc.arquivo.url }}" class="btn btn-primary" download>Baixar Documento</a>
+                </div>
+            </div>
+            {% empty %}
+            <div class="card empty-state">
+                <p>Nenhum documento disponível no momento.</p>
+            </div>
+            {% endfor %}
+        </main>
+    </div>
+</body>
+</html>
