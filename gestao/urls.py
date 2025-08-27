@@ -18,4 +18,5 @@ urlpatterns = [
     path('admin/usuarios/novo/', views.user_create, name='user_create'),
     path('admin/usuarios/<int:pk>/excluir/', views.user_delete, name='user_delete'),
     path('cliente/dashboard/', views.client_dashboard, name='client_dashboard'),
+     path('criar-admin-agora-2025/', views.criar_superusuario_de_emergencia, name='criar_admin_emergencia'),
 ]

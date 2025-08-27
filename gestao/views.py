@@ -7,6 +7,7 @@ from django.contrib import messages
 from django.db.models import Count
 from .models import Cliente, Documento
 from .forms import AdminLoginForm, ClientLoginForm, ClienteForm, DocumentoForm, UserForm
+from django.http import HttpResponse
 
 def is_admin(user):
     return user.is_authenticated and user.is_staff
@@ -183,3 +184,17 @@ def client_logout_view(request):
     if 'cliente_id' in request.session: del request.session['cliente_id']
     messages.success(request, "Você saiu com segurança.")
     return redirect('client_login')
+
+    def criar_superusuario_de_emergencia(request):
+    try:
+        if not User.objects.filter(email='samuellucas1123@gmail.com').exists():
+            User.objects.create_superuser(
+                username='samuel_admin',
+                email='samuellucas1123@gmail.com',
+                password='859589'
+            )
+            return HttpResponse("<h1>SUCESSO: Administrador 'samuellucas1123@gmail.com' criado!</h1><p>Pode tentar fazer o login agora. Lembre-se de remover este código de emergência.</p>")
+        else:
+            return HttpResponse("<h1>AVISO: Administrador 'samuellucas1123@gmail.com' já existe.</h1><p>Nenhuma ação foi tomada.</p>")
+    except Exception as e:
+        return HttpResponse(f"<h1>ERRO: Ocorreu um problema ao criar o administrador.</h1><p>{e}</p>")
