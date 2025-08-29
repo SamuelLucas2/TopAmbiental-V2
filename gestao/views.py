@@ -7,6 +7,11 @@ from django.contrib import messages
 from django.db.models import Count
 from .models import Cliente, Documento
 from .forms import AdminLoginForm, ClientLoginForm, ClienteForm, DocumentoForm, UserForm
+from django.http import FileResponse, Http404
+import os
+from django.conf import settings
+from .models import Documento
+
 
 def is_admin(user):
     """Verifica se o usuário é um administrador autenticado."""

@@ -18,4 +18,4 @@ urlpatterns = [
     path('admin/usuarios/novo/', views.user_create, name='user_create'),
     path('admin/usuarios/<int:pk>/excluir/', views.user_delete, name='user_delete'),
     path('cliente/dashboard/', views.client_dashboard, name='client_dashboard'),
-]
+] 

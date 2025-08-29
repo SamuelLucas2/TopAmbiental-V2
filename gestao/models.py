@@ -9,10 +9,11 @@ class Cliente(models.Model):
         return self.nome_empresa
 
 class Documento(models.Model):
-    cliente = models.ForeignKey(Cliente, on_delete=models.CASCADE, related_name='documentos')
-    titulo = models.CharField(max_length=200)
-    arquivo = models.FileField()
+    cliente = models.ForeignKey(Cliente, related_name='documentos', on_delete=models.CASCADE)
+    titulo = models.CharField(max_length=255)
+    arquivo = models.FileField(upload_to='documentos/')
     data_envio = models.DateTimeField(auto_now_add=True)
+
 
     def __str__(self):
         return self.titulo

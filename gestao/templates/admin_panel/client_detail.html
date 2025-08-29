@@ -40,7 +40,7 @@
                 <td>{{ doc.titulo }}</td>
                 <td>{{ doc.data_envio|date:"d/m/Y H:i" }}</td>
                 <td class="actions">
-                    <a href="{{ doc.arquivo.url }}" class="btn btn-secondary" download>Download</a>
+                    <a href="{{ doc.arquivo.url }}" target="_blank"class="btn btn-secondary" download>Download</a>
                     <form action="{% url 'delete_document' doc.pk %}" method="post" style="display: inline;" onsubmit="return confirm('Tem certeza que deseja excluir este documento?');">
                         {% csrf_token %}
                         <button type="submit" class="btn btn-danger">Excluir</button>
